@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/drawable/edit_text_bg.xml" value="0.2095" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/drawable/ic_add.xml" value="0.2095" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/drawable/ic_eye.xml" value="0.2095" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/drawable/ic_eye_cross.xml" value="0.2095" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/drawable/icon_clear_search.xml" value="0.2095" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/drawable/left_curved_bg.xml" value="0.2095" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/drawable/right_curved_bg.xml" value="0.2095" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/drawable/selector_show_password.xml" value="0.2095" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/drawable/sign_up_button.xml" value="0.2095" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/drawable/sign_up_button_shape.xml" value="0.2095" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/layout/activity_main.xml" value="0.16576086956521738" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/layout/fragment_instruction.xml" value="0.16576086956521738" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/layout/fragment_login.xml" value="0.17708333333333334" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/layout/fragment_shoe_detail.xml" value="0.16576086956521738" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/layout/fragment_shoe_list.xml" value="0.16576086956521738" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/layout/fragment_welcome.xml" value="0.16576086956521738" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/layout/item_shoe.xml" value="0.264" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/layout/login_fragment.xml" value="0.16576086956521738" />
+        <entry key="..\:/Users/User/Documents/Work/UdacityCourse/Project1/ShoeStore/nd940-android-kotlin-course1-starter/starter/app/src/main/res/menu/main_menu.xml" value="0.19791666666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
