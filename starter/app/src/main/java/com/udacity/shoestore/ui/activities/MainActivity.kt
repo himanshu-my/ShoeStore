@@ -42,21 +42,6 @@ class MainActivity : AppCompatActivity() {
         Timber.plant(Timber.DebugTree())
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.main_menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id: Int = item.itemId
-        if (id == R.id.action_logout) {
-            navController?.navigate(R.id.loginFragment)
-            return true
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
     fun openFragment(navController: NavController,
                      navigationId: Int, bundle: Bundle?) {
         navController.navigate(navigationId,

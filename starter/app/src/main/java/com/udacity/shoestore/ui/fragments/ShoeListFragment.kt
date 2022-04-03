@@ -1,12 +1,10 @@
 package com.udacity.shoestore.ui.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.udacity.shoestore.R
@@ -15,7 +13,6 @@ import com.udacity.shoestore.databinding.ItemShoeBinding
 import com.udacity.shoestore.models.Shoe
 import com.udacity.shoestore.ui.activities.MainActivity
 import com.udacity.shoestore.view_models.ShoeListViewModel
-import timber.log.Timber
 import java.lang.ref.WeakReference
 
 class ShoeListFragment : Fragment() {
@@ -23,9 +20,9 @@ class ShoeListFragment : Fragment() {
     private var mBinding: FragmentShoeListBinding? = null
     private var activityWeakReference: WeakReference<MainActivity?>? = null
     private var navController: NavController? = null
-    companion object {
-        var shoeList: MutableList<Shoe> = mutableListOf()
-    }
+    var shoeList: MutableList<Shoe>? = mutableListOf()
+    private val viewModel: ShoeListViewModel by activityViewModels()
+
 
     private fun getActivityWeakReference(): MainActivity? {
         return try {
@@ -39,7 +36,10 @@ class ShoeListFragment : Fragment() {
         }
     }
 
-
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true);
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -61,32 +61,51 @@ class ShoeListFragment : Fragment() {
                 R.id.action_shoeListFragment_to_shoeDetailFragment, null
             )
         }
-        navController?.currentBackStackEntry?.savedStateHandle?.getLiveData<MutableList<Shoe>>("key")
+        navController?.currentBackStackEntry?.savedStateHandle?.getLiveData<Shoe>("key")
             ?.observe(
                 viewLifecycleOwner
             ) { it ->
-                val tempList = mutableListOf<Shoe>()
-                if (it.isEmpty().not()) {
-                    for (item in it) {
-                        Timber.d("Shoe Name %s, Shoe Company %s", item.name, item.company)
-                        tempList.add(item)
-                    }
-                    shoeList = tempList
-                }
+                shoeList?.add(it)
                 mBinding?.shoeLayout?.removeAllViews()
                 val inflater = LayoutInflater.from(getActivityWeakReference())
-                for (shoe in tempList) {
+                for (shoe in shoeList!!) {
                     val mShoeItemBinding: ItemShoeBinding = DataBindingUtil.inflate(
                         inflater,
                         R.layout.item_shoe, null, false
                     )
+                    mShoeItemBinding.rootView.setOnClickListener {
+                        viewModel.selectedItem(shoe)
+                        getActivityWeakReference()?.openFragment(
+                            navController!!,
+                            R.id.action_shoeListFragment_to_shoeDetailFragment, null
+                        )
+                    }
                     mBinding?.shoeLayout?.addView(mShoeItemBinding.root)
-                    mShoeItemBinding.shoeNameVal.text = shoe.name
-                    mShoeItemBinding.companyVal.text = shoe.company
-                    mShoeItemBinding.sizeVal.text = shoe.size.toString()
-                    mShoeItemBinding.descriptionVal.text = shoe.description
+                    mShoeItemBinding.shoe = shoe
                 }
 
             }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu, menuInflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id: Int = item.itemId
+        if (id == R.id.action_logout) {
+            navController?.navigate(R.id.loginFragment)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onDetach() {
+        mBinding = null
+        activityWeakReference = null
+        navController = null
+        shoeList = null
+        super.onDetach()
     }
 }

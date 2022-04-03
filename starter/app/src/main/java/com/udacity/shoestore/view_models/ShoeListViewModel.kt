@@ -8,15 +8,20 @@ import timber.log.Timber
 
 class ShoeListViewModel : ViewModel() {
 
-    private val shoeList: MutableLiveData<MutableList<Shoe>> =
-        MutableLiveData<MutableList<Shoe>>()
+    val shoeList =  MutableLiveData<MutableList<Shoe>>()
+    val shoeItem: MutableLiveData<Shoe> =
+        MutableLiveData<Shoe>()
 
-    fun getList(): MutableLiveData<MutableList<Shoe>> {
+    fun selectedItem(item: Shoe) {
+        shoeItem.value = item
+    }
+
+    fun getList(): MutableLiveData<MutableList<Shoe>>{
         return shoeList
     }
 
-    fun setList(shoes: MutableList<Shoe>) {
-        shoeList.value = shoes
+    fun setList(list: MutableList<Shoe>){
+        shoeList.value = list
     }
 
     override fun onCleared() {

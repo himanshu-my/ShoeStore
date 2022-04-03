@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="shoe"
+            type="com.udacity.shoestore.models.Shoe" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,7 +38,8 @@
                 android:layout_weight="1"
                 android:autofillHints="name"
                 android:hint="@string/enter_shoe_name"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@{shoe.name}"/>
 
         </LinearLayout>
 
@@ -62,7 +69,8 @@
                 android:layout_weight="1"
                 android:autofillHints="name"
                 android:hint="@string/enter_company_name"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@{shoe.company}"/>
 
         </LinearLayout>
 
@@ -92,7 +100,8 @@
                 android:layout_weight="1"
                 android:autofillHints="name"
                 android:hint="@string/enter_shoe_size"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:text="@{String.valueOf(shoe.size)}"/>
 
         </LinearLayout>
 
@@ -122,7 +131,8 @@
                 android:layout_weight="1"
                 android:autofillHints="name"
                 android:hint="@string/enter_description"
-                android:inputType="text" />
+                android:inputType="text"
+                android:text="@{shoe.description}"/>
 
         </LinearLayout>
 

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
@@ -22,7 +23,7 @@ class ShoeDetailFragment : Fragment() {
     private var mBinding: FragmentShoeDetailBinding? = null
     private var activityWeakReference: WeakReference<MainActivity?>? = null
     private var navController: NavController? = null
-    private val viewModel: ShoeListViewModel by viewModels()
+    private val viewModel: ShoeListViewModel by activityViewModels()
 
     private fun getActivityWeakReference(): MainActivity? {
         return try {
@@ -47,11 +48,15 @@ class ShoeDetailFragment : Fragment() {
             container,
             false
         )
+        mBinding?.shoe = Shoe()
         return mBinding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.shoeItem.observe(viewLifecycleOwner) { shoe ->
+            mBinding?.shoe = shoe
+        }
         navController = Navigation.findNavController(view)
         mBinding?.btnCancel?.setOnClickListener {
             navController?.navigate(R.id.shoeListFragment)
@@ -65,17 +70,7 @@ class ShoeDetailFragment : Fragment() {
                             mBinding?.companyEt?.text.toString(),
                             mBinding?.descriptionEt?.text.toString())
 
-                        if (ShoeListFragment.shoeList.isEmpty().not()) {
-                            val shoeList = ShoeListFragment.shoeList
-                            shoeList.add(shoeModel)
-                            viewModel.setList(shoeList)
-                            navController?.previousBackStackEntry?.savedStateHandle?.set("key", shoeList)
-                        } else {
-                            val newShoeList = mutableListOf<Shoe>()
-                            newShoeList.add(shoeModel)
-                            viewModel.setList(newShoeList)
-                            navController?.previousBackStackEntry?.savedStateHandle?.set("key", newShoeList)
-                        }
+                        navController?.previousBackStackEntry?.savedStateHandle?.set("key", shoeModel)
                         navController?.popBackStack()
 
                     } else {

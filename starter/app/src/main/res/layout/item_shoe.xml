@@ -2,7 +2,14 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="shoe"
+            type="com.udacity.shoestore.models.Shoe" />
+    </data>
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/rootView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp">
@@ -32,7 +39,8 @@
                     android:id="@+id/shoe_name_val"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="@{shoe.name}"/>
 
             </LinearLayout>
 
@@ -59,7 +67,8 @@
                     android:id="@+id/company_val"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="@{shoe.company}"/>
 
             </LinearLayout>
 
@@ -86,7 +95,8 @@
                     android:id="@+id/size_val"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="@{String.valueOf(shoe.size)}"/>
 
             </LinearLayout>
 
@@ -113,7 +123,8 @@
                     android:id="@+id/description_val"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:text="@{shoe.description}"/>
 
             </LinearLayout>
 
